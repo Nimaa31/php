@@ -16,7 +16,7 @@
         <input type="mail" name="mail_util">
         <p>Saisir le mot de passe :</p>
         <input type="password" name="mdp_util">
-        <p><input type="submit" value="Ajouter" name="submit"></p>
+        <p><input type="submit" value="Modifier" name="submit"></p>
     </form>
 </body>
 </html>

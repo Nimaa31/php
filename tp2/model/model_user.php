@@ -23,7 +23,8 @@
             $req = $bdd->prepare('SELECT * FROM utilisateur');
             $req->execute();
             while($data = $req->fetch()){
-                echo '<p><a href="update_user.php?id='.$data['id_util'].'">Nom : '.$data['nom_util'].' prenom : '.$data['prenom_util'].' 
+                echo '<p> <input type="checkbox" 
+                name="check[]" value="'.$data['id_util'].'"><a href="update_user.php?id='.$data['id_util'].'">Nom : '.$data['nom_util'].' prenom : '.$data['prenom_util'].' 
                 mail: '.$data['mail_util'].'</a></p>';
             }
         }
@@ -52,4 +53,18 @@
             die('Erreur : '.$e->getMessage());
         }
     }
+    function deleteUser($bdd, $value){
+        try{
+            $req = $bdd->prepare('DELETE FROM utilisateur WHERE id_util = :id_util');
+            $req->execute(array(
+                'id_util' => $value
+                ));
+        }
+        catch(Exception $e)
+        {
+        //affichage d'une exception en cas d’erreur
+        die('Erreur : '.$e->getMessage());
+        }
+    }
+
 ?>
